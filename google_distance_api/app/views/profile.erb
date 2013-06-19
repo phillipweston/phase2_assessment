@@ -1,0 +1,28 @@
+<div class="container">
+	<form id="add-route-form" action="/calculate" method="post">
+		<input name="origin_address" type="text" placeholder="starting address">
+		<input name="destination_address" type="text" placeholder="destination address">
+		<input name="add route" value="add route" type="submit">
+	</form>
+
+	<% if current_user.routes.length > 0 %>
+	<dl>
+		<dd id="origin">Origin</dd>
+		<dd id="destination">Destination</dd>
+		<dd id="miles">Distance</dd>
+		<dd id="trips">Trips</dd>
+
+		<% current_user.routes.reverse.each do |route| %>
+		<div class="trip-data">
+			<dd id="origin"><%= route.origin %></dd>
+			<dd id="destination"><%= route.destination %></dd>
+			<dd id="miles"><%= route.distance %> miles</dd>
+			<dd id="<%= route.trips.find_by_user_id(current_user.id).id %>" class="trips"><%= route.trips.find_by_user_id(current_user.id).times %></dd>
+			<dd class="add"><a href="#">add</a></dd>
+		</div>
+		<% end %>
+
+	</dl>
+	<% end %>
+
+</div>

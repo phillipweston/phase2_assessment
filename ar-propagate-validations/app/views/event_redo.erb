@@ -1,0 +1,15 @@
+<% if @errors %>
+	<% @errors.each do |error| %>
+	<div class="error">
+		<%= error %>
+	</div>
+	<% end %>
+<% end %>
+
+<form action="/events/create" method="post">
+	<input name="title" type="text" placeholder="title" value="<%= @params[:title] %>">
+	<input name="date" type="date" value="<%= @params[:date] %>">
+	<input name="organizer_name" type="text" placeholder="organizer name" value="<%= @params[:organizer_name] %>">
+	<input name="organizer_email" type="email" placeholder="email" value="<%= @params[:organizer_email] %>">
+	<input type="submit" value="submit">
+</form>

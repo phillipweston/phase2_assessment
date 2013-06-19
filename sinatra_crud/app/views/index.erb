@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Your Notes!</h1>
+  
+  <div id="notes">
+  <% @notes.each do |note| %>
+    <div class="note" id="<%= note.id %>">
+      <div><%= note.title %></div><div><%= note.content %></div><br><a href="#" class="delete">delete</a><a href="#" class="update">update</a><br><br>
+    </div>
+  <% end %>
+  </div>
+
+  <form id="add-note" action="/addnote" method="post">
+    <input id="title-text" type="text" name="title" placeholder="title...">
+    <input id="content-text" type="text" name="content" placeholder="content...">
+    <input id="submit-button" type="submit" name="submit">
+  </form>
+
+  <div id="form-update" style="display: none;">
+    <form id="update-form" action="/updddsafdastenote" method="put">
+      <input id="title-text" type="text" name="title" placeholder="title...">
+      <input id="content-text" type="text" name="content" placeholder="content...">
+      <input id="update-button" type="submit" name="update" value="update">
+    </form>
+  </div>
+
+
+</div>
